@@ -1,0 +1,38 @@
+<!-- Program was implemented with the aid of https://www.youtube.com/watch?v=UymGJnv-WsE
+ Video was followed through for an understanding of the topic as it wasn't of my knowledge
+ Research was also conducted and through countless blogs, articles and videos, this reference was the one that got my understanding to the fullest -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chat App</title>
+  <script defer src="http://localhost:4200/socket.io/socket.io.js"></script>
+  <script defer src="sockets.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet'>
+  <style>
+  body {
+      font-family: 'Raleway';font-size: 22px;
+  }
+  </style>
+</head>
+<body>
+    <h1><i class="fa fa-mobile-phone" style="font-size:48px;color:red"></i> Chat Application</h1>
+    <!-- list of rooms -->
+    <div id="room-container">
+      <!-- get room keys and loop throguh them -->
+    <% Object.keys(rooms).forEach(room => { %>
+      <div><%= room %></div>
+      <a href="/<%= room %>">- Join -</a> <!-- link to be able to access room -->
+    <% }) %>  <!-- close loop -->
+  </div>
+  <!-- form to create new rooms -->
+    <form action="/room" method="POST" autocomplete="off"> <!-- route to /room -->
+        <input name="room" type="text" required> <!-- input with a submit button to create new room -->
+        <button type="submit">Create a Room</button>
+    </form>
+</body>
+</html>
